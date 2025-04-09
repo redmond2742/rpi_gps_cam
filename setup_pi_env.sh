@@ -20,7 +20,7 @@ sudo systemctl stop gpsd.socket
 sudo systemctl disable gpsd.socket
 sudo systemctl restart gpsd
 
-echo "📁 Setting up AFP share at /home/pi/MacShare..."
+echo "📁 Setting up AFP share at /home/pi..."
 
 # Create a special shared folder if it doesn't exist, just use home directory
 # mkdir -p /home/pi/SpecialFolder
