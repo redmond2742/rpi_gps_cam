@@ -22,20 +22,20 @@ sudo systemctl restart gpsd
 
 echo "📁 Setting up AFP share at /home/pi/MacShare..."
 
-# Create the shared folder if it doesn't exist
-mkdir -p /home/pi/MacShare
+# Create a special shared folder if it doesn't exist, just use home directory
+# mkdir -p /home/pi/SpecialFolder
 
 # Append AFP share config if not already present
-if ! grep -q "\[MacShare\]" /etc/netatalk/afp.conf; then
+if ! grep -q "\[PiShare\]" /etc/netatalk/afp.conf; then
   sudo tee -a /etc/netatalk/afp.conf > /dev/null <<EOF
 
-[MacShare]
-path = /home/pi/MacShare
+[Pihare]
+path = /home/pi/
 time machine = no
 EOF
   echo "✅ AFP share configuration added."
 else
-  echo "ℹ️ AFP share [MacShare] already exists in afp.conf. Skipping."
+  echo "ℹ️ AFP share [PiShare] already exists in afp.conf. Skipping."
 fi
 
 # Restart netatalk to apply changes
