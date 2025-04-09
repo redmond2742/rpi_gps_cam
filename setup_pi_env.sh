@@ -6,6 +6,10 @@ sudo apt update && sudo apt upgrade -y
 echo "Installing system dependencies..."
 sudo apt install -y python3-pip python3-venv python3-gps netatalk
 
+echo "📦 Installing usbmount dependencies..."
+sudo apt install -y udisks2
+
+
 echo " Configuring /etc/default/gpsd..."
 
 sudo tee /etc/default/gpsd > /dev/null <<EOF
@@ -99,6 +103,34 @@ echo "🔁 Enabling and starting gpslogger service..."
 sudo systemctl daemon-reload
 sudo systemctl enable gpslogger.service
 sudo systemctl start gpslogger.service
+
+
+echo "⚙️ Creating USB automount script..."
+sudo tee /usr/local/bin/mount-usb.sh > /dev/null <<'EOF'
+#!/bin/bash
+
+MOUNT_POINT="/mnt/usb"
+
+for DEV in /dev/sd[a-z][1-9]*; do
+    if ! mount | grep -q "$DEV"; then
+        mkdir -p "$MOUNT_POINT"
+        mount "$DEV" "$MOUNT_POINT" && chown -R pi:pi "$MOUNT_POINT"
+        echo "🔌 USB mounted at $MOUNT_POINT"
+        exit 0
+    fi
+done
+EOF
+
+sudo chmod +x /usr/local/bin/mount-usb.sh
+
+echo "📝 Creating udev rule for USB automount..."
+sudo tee /etc/udev/rules.d/99-usb-mount.rules > /dev/null <<EOF
+ACTION=="add", SUBSYSTEMS=="usb", KERNEL=="sd*[0-9]", RUN+="/usr/local/bin/mount-usb.sh"
+EOF
+
+# Apply new udev rules
+sudo udevadm control --reload-rules
+
 
 
 echo "Environment setup complete!"
