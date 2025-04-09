@@ -46,7 +46,7 @@ echo "Installing virtualenv..."
 pip3 install --user virtualenv
 
 # Create Python virtual environment
-VENV_DIR="$HOME/pi/gps_cam"
+VENV_DIR="$HOME/pi/gps_cam/"
 if [ ! -d "$VENV_DIR" ]; then
   echo "🌱 Creating Python virtual environment at $VENV_DIR"
   python3 -m venv "$VENV_DIR"
