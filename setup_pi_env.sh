@@ -65,6 +65,18 @@ pip install \
     gpxpy
 
 
+echo "Downloading gps_vidV0.py from GitHub..."
+
+mkdir -p /home/pi/gps_cam
+
+curl -fsSL -o /home/pi/gps_cam/gps_vidV0.py \
+  https://raw.githubusercontent.com/redmond2742/rpi_gps_cam/refs/heads/main/gps_vidV0.py
+
+chmod +x /home/pi/gps_cam/gps_vidV0.py
+
+echo "Downloaded and prepared /home/pi/gps_cam/gps_vidV0.py"
+
+
 echo "Creating systemd service: gpslogger.service..."
 
 sudo tee /etc/systemd/system/gpslogger.service > /dev/null <<EOF
