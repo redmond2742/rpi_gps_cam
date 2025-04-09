@@ -33,7 +33,7 @@ echo "📁 Setting up AFP share at /home/pi..."
 if ! grep -q "\[PiShare\]" /etc/netatalk/afp.conf; then
   sudo tee -a /etc/netatalk/afp.conf > /dev/null <<EOF
 
-[Pihare]
+[PiShare]
 path = /home/pi/
 time machine = no
 EOF
@@ -50,14 +50,17 @@ echo "Installing virtualenv..."
 pip3 install --user virtualenv
 
 # Create Python virtual environment
-VENV_DIR="$HOME/pi/gps_cam/.env"
-if [ ! -d "$VENV_DIR" ]; then
+VENV_DIR="$HOME/gps_cam"
+
+mkdir $VENV_DIR
+if [ ! -d "$VENV_DIR/.env" ]; then
   echo "🌱 Creating Python virtual environment at $VENV_DIR"
-  python3 -m venv "$VENV_DIR"
+  cd "$VENV_DIR"
+  python3 -m venv .env
 fi
 
 # Activate the virtual environment and install pip packages
-source "$VENV_DIR/bin/activate"
+source "$VENV_DIR/.env/bin/activate"
 
 echo "Installing pip packages inside virtual environment..."
 pip install --upgrade pip
