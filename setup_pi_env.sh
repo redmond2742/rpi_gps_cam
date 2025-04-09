@@ -64,6 +64,31 @@ pip install \
     RPi.GPIO \
     gpxpy
 
+
+echo "Creating systemd service: gpslogger.service..."
+
+sudo tee /etc/systemd/system/gpslogger.service > /dev/null <<EOF
+[Unit]
+Description=GPS and Video Logger
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/pi/gps_cam/gps_vidV0.py
+WorkingDirectory=/home/pi
+StandardOutput=inherit
+StandardError=inherit
+User=pi
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+echo "🔁 Enabling and starting gpslogger service..."
+sudo systemctl daemon-reload
+sudo systemctl enable gpslogger.service
+sudo systemctl start gpslogger.service
+
+
 echo "Environment setup complete!"
 echo "To activate your Python environment later, run:"
 echo "   source $VENV_DIR/bin/activate"
