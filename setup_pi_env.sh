@@ -6,6 +6,21 @@ sudo apt update && sudo apt upgrade -y
 echo "Installing system dependencies..."
 sudo apt install -y python3-pip python3-venv python3-gps netatalk
 
+echo " Configuring /etc/default/gpsd..."
+
+sudo tee /etc/default/gpsd > /dev/null <<EOF
+START_DAEMON="true"
+GPSD_OPTIONS="-n"
+DEVICES="/dev/serial0"
+GPSD_SOCKET="/var/run/gpsd.sock"
+EOF
+
+echo "Restarting gpsd service..."
+sudo systemctl stop gpsd.socket
+sudo systemctl disable gpsd.socket
+sudo systemctl restart gpsd
+
+
 echo "Installing virtualenv..."
 pip3 install --user virtualenv
 
