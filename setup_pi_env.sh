@@ -20,6 +20,27 @@ sudo systemctl stop gpsd.socket
 sudo systemctl disable gpsd.socket
 sudo systemctl restart gpsd
 
+echo "📁 Setting up AFP share at /home/pi/MacShare..."
+
+# Create the shared folder if it doesn't exist
+mkdir -p /home/pi/MacShare
+
+# Append AFP share config if not already present
+if ! grep -q "\[MacShare\]" /etc/netatalk/afp.conf; then
+  sudo tee -a /etc/netatalk/afp.conf > /dev/null <<EOF
+
+[MacShare]
+path = /home/pi/MacShare
+time machine = no
+EOF
+  echo "✅ AFP share configuration added."
+else
+  echo "ℹ️ AFP share [MacShare] already exists in afp.conf. Skipping."
+fi
+
+# Restart netatalk to apply changes
+sudo systemctl restart netatalk
+
 
 echo "Installing virtualenv..."
 pip3 install --user virtualenv
