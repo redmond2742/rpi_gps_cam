@@ -9,10 +9,10 @@ Simple raspberry pi config to log GPS and Video.
 * SD Card for OS (not for logging)
 
 ### Software Setup and Notes
-Note: Needs Python 3.9 for some python packages
-Using Raspberry Pi OS - Bullsye (Legacy) 64 bit lite OS (no desktop version)
-Enable Wifi (WPA supplicant file) and SSH on device
-Download and run setup bash script (in this repo)
+* Note: Needs Python 3.9 for some python packages
+* Using Raspberry Pi OS - Bullsye (Legacy) 64 bit lite OS (no desktop version)
+* Enable Wifi (WPA supplicant file) and SSH on device
+* Download and run setup bash script (in this repo)
   $ bash <(curl -s https://raw.githubusercontent.com/YOUR_USERNAME/raspberry-pi-setup/main/setup_pi_env.sh
 
 Configure Netatalk file. -Todo: add to script above
