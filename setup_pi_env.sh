@@ -134,8 +134,17 @@ EOF
 # Apply new udev rules
 sudo udevadm control --reload-rules
 
+echo "🛠 Updating /boot/config.txt for libcamera support..."
+
+sudo sed -i 's/^start_x=1/#start_x=1/' /boot/config.txt
+sudo sed -i 's/^gpu_mem=128/#gpu_mem=128/' /boot/config.txt
+
+# Only add the new lines if they're not already present
+grep -q "^dtoverlay=vc4-kms-v3d" /boot/config.txt || echo "dtoverlay=vc4-kms-v3d" | sudo tee -a /boot/config.txt
+grep -q "^camera_auto_detect=1" /boot/config.txt || echo "camera_auto_detect=1" | sudo tee -a /boot/config.txt
+
+echo "✅ /boot/config.txt updated."
 
 
-echo "Environment setup complete!"
-echo "To activate your Python environment later, run:"
-echo "   source $VENV_DIR/bin/activate"
+
+
