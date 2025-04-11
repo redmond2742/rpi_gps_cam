@@ -92,7 +92,7 @@ Description=GPS and Video Logger
 After=network.target
 
 [Service]
-# ExecStart=/usr/bin/python3 /home/pi/gps_cam/gps_vidV0.py
+ExecStart=/usr/bin/python3 /home/pi/gps_cam/gps_vidV1.py
 WorkingDirectory=/home/pi
 StandardOutput=inherit
 StandardError=inherit
