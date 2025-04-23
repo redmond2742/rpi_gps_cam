@@ -3,12 +3,17 @@
 echo "Updating system packages..."
 sudo apt update && sudo apt upgrade -y
 
+
+
 echo "Installing system dependencies..."
 sudo apt install -y python3-pip python3-venv python3-gps netatalk
 
 echo "📦 Installing usbmount dependencies..."
 sudo apt install -y udisks2
 
+echo "Allow for exFat usb file partitions"
+sudo apt install exfat-fuse
+sudo apt install exfatprogs
 
 echo " Configuring /etc/default/gpsd..."
 
