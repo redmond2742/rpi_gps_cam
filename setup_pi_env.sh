@@ -12,8 +12,8 @@ echo "📦 Installing usbmount dependencies..."
 sudo apt install -y udisks2
 
 echo "Allow for exFat usb file partitions"
-sudo apt install exfat-fuse
-sudo apt install exfatprogs
+sudo apt install -y exfat-fuse
+sudo apt install -y exfatprogs
 
 echo " Configuring /etc/default/gpsd..."
 
