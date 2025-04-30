@@ -81,8 +81,13 @@ echo "Downloading gps_vidV0.py from GitHub..."
 
 mkdir -p /home/pi/gps_cam
 
-curl -fsSL -o /home/pi/gps_cam/gps_vidV0.py \
+curl -fsSL -o /home/pi/gps_cam/gps_vid_prod.py \
   https://raw.githubusercontent.com/redmond2742/rpi_gps_cam/refs/heads/main/gps_vid_production.py
+
+curl -fsSL -o /home/pi/ \
+  https://raw.githubusercontent.com/redmond2742/rpi_gps_cam/refs/heads/main/startup.sh
+
+
 
 chmod +x /home/pi/gps_cam/gps_vidV0.py
 
