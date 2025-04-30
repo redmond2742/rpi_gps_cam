@@ -3,6 +3,7 @@
 echo "Updating system packages..."
 sudo apt update && sudo apt upgrade -y
 
+sudo apt install netatalk -y
 
 
 echo "Installing system dependencies..."
