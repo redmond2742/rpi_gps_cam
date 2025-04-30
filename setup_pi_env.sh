@@ -85,12 +85,12 @@ mkdir -p /home/pi/gps_cam
 curl -fsSL -o /home/pi/gps_cam/gps_vid_prod.py \
   https://raw.githubusercontent.com/redmond2742/rpi_gps_cam/refs/heads/main/gps_vid_production.py
 
-curl -fsSL -o /home/pi/ \
+chmod +x /home/pi/gps_cam/gps_vid_production.py
+
+curl -fsSL -o /home/pi/startup.sh \
   https://raw.githubusercontent.com/redmond2742/rpi_gps_cam/refs/heads/main/startup.sh
 
-
-
-chmod +x /home/pi/gps_cam/gps_vidV0.py
+chmod +x /home/pi/startup.sh
 
 echo "Downloaded and prepared /home/pi/gps_cam/gps_vidV0.py"
 
