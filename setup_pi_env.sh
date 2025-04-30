@@ -92,7 +92,7 @@ curl -fsSL -o /home/pi/startup.sh \
 
 chmod +x /home/pi/startup.sh
 
-echo "Downloaded and prepared /home/pi/gps_cam/gps_vidV0.py"
+echo "Downloaded and prepared python and statup files"
 
 
 echo "Creating systemd service: gpslogger.service..."
