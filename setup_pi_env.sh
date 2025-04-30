@@ -7,6 +7,7 @@ sudo apt install netatalk -y
 
 
 echo "Installing gpsd and python system dependencies..."
+sudo apt-get install -y python3-pip
 sudo apt install gpsd gpsd-clients python3-gps -y
 sudo apt install -y python3-pip python3-venv python3-gps netatalk
 
