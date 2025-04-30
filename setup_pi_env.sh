@@ -6,7 +6,8 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install netatalk -y
 
 
-echo "Installing system dependencies..."
+echo "Installing gpsd and python system dependencies..."
+sudo apt install gpsd gpsd-clients python3-gps -y
 sudo apt install -y python3-pip python3-venv python3-gps netatalk
 
 echo "📦 Installing usbmount dependencies..."
