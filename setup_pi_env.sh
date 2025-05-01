@@ -3,6 +3,12 @@
 echo "Updating system packages..."
 sudo apt update && sudo apt upgrade -y
 
+sudo apt update
+sudo apt full-upgrade -y
+sudo rpi-update -y
+
+
+
 sudo apt install netatalk -y
 
 
