@@ -18,6 +18,7 @@ sudo apt-get install gpsd-clients gpsd -y
 sudo apt install python3-gps -y
 
 sudo apt install -y libcamera-apps
+sudo apt install ffmpeg -y
 
 sudo apt install -y python3-pip python3-venv python3-gps netatalk
 
