@@ -8,7 +8,11 @@ sudo apt install netatalk -y
 
 echo "Installing gpsd and python system dependencies..."
 sudo apt-get install -y python3-pip
-sudo apt install gpsd gpsd-clients python3-gps -y
+sudo apt-get install gpsd-clients gpsd -y
+sudo apt install python3-gps -y
+
+sudo apt install -y libcamera-apps
+
 sudo apt install -y python3-pip python3-venv python3-gps netatalk
 
 echo "📦 Installing usbmount dependencies..."
@@ -146,6 +150,8 @@ EOF
 
 # Apply new udev rules
 sudo udevadm control --reload-rules
+
+
 
 echo "🛠 Updating /boot/config.txt for libcamera support..."
 
