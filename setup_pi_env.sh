@@ -12,6 +12,8 @@ sudo rpi-update -y
 sudo apt install netatalk -y
 
 
+
+
 echo "Installing gpsd and python system dependencies..."
 sudo apt-get install -y python3-pip
 sudo apt-get install gpsd-clients gpsd -y
@@ -28,6 +30,7 @@ sudo apt install -y udisks2
 echo "Allow for exFat usb file partitions"
 sudo apt install -y exfat-fuse
 sudo apt install -y exfatprogs
+sudo apt install -y exfat-utils
 
 echo " Configuring /etc/default/gpsd..."
 
